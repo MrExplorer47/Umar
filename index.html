@@ -8,44 +8,45 @@
         body {
             margin: 0;
             padding: 0;
-            background: #0f0f0f;
-            colour: #e5e5e5;
-            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            colour: #333;
+            font-family: "Helvetica Neue", Arial, sans-serif;
             display: flex;
             justify-content: centre;
             align-items: centre;
             height: 100vh;
             text-align: centre;
         }
-        .container {
-            max-width: 600px;
+        .wrapper {
+            max-width: 500px;
             padding: 20px;
         }
-        h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+        .logo {
+            font-size: 40px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            animation: float 3s ease-in-out infinite;
+            colour: #111;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0); }
         }
         p {
             font-size: 18px;
+            colour: #555;
+            margin-top: 20px;
             line-height: 1.6;
-            opacity: 0.8;
-        }
-        .fade-in {
-            animation: fadein 2s ease;
-        }
-        @keyframes fadein {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <div class="container fade-in">
-        <h1>Something new is on the way</h1>
+    <div class="wrapper">
+        <div class="logo">◯</div>
         <p>
-            A small corner of the internet is taking shape.  
-            Nothing flashy yet, just foundations being set quietly in the background.  
+            Something new is taking shape here.  
+            A quiet space being built with care.  
             Check back soon.
         </p>
     </div>
