@@ -1,54 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coming Soon</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: #f4f4f4;
-            colour: #333;
-            font-family: "Helvetica Neue", Arial, sans-serif;
-            display: flex;
-            justify-content: centre;
-            align-items: centre;
-            height: 100vh;
-            text-align: centre;
-        }
-        .wrapper {
-            max-width: 500px;
-            padding: 20px;
-        }
-        .logo {
-            font-size: 40px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            animation: float 3s ease-in-out infinite;
-            colour: #111;
-        }
-        @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
-            100% { transform: translateY(0); }
-        }
-        p {
-            font-size: 18px;
-            colour: #555;
-            margin-top: 20px;
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UA - The Shape of Effort</title>
+  <meta name="description" content="An extended essay: 'Challenges are what we live for' reflections by Umar Altaf (UA), with balanced supporting imagery and a clear, text-forward layout." />
+  <style>
+    :root{
+      --bg: #fbfbfb;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --text: #0b1220;
+      --accent: #1f6feb;
+      --max-width: 1060px;
+      --gap: 26px;
+      --radius: 12px;
+      --shadow: 0 8px 30px rgba(8,12,20,0.06);
+      --content-width: 70ch;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.78;
+    }
+
+    .page {
+      min-height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 44px 18px;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+    }
+
+    header.site-header{
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: var(--gap);
+    }
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #7cc8ff 120%);
+      box-shadow: 0 8px 18px rgba(31,111,235,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 18px;
+      transform-origin: center;
+      animation: float 3.6s ease-in-out infinite;
+      flex: 0 0 64px;
+      user-select: none;
+    }
+
+    @keyframes float{
+      0%{ transform: translateY(0); }
+      50%{ transform: translateY(-8px); }
+      100%{ transform: translateY(0); }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      box-sizing: border-box;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 26px;
+      align-items: start;
+    }
+
+    main.content {
+      min-width: 0;
+      max-width: var(--content-width);
+    }
+
+    aside.images {
+      position: sticky;
+      top: 28px;
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .aside-thumb {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(10,14,20,0.06);
+    }
+    .aside-thumb img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .aside-caption {
+      font-size: 12px;
+      color: var(--muted);
+      padding: 8px 6px;
+    }
+
+    article {
+      margin-top: 6px;
+      color: #14202b;
+    }
+
+    article h2 {
+      margin: 0 0 10px 0;
+      font-size: 32px;
+      line-height: 1.05;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .byline {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    article p {
+      margin: 0 0 20px 0;
+      font-size: 18px;
+      text-wrap: balance;
+    }
+
+    .figure-left, .figure-right, .figure-centre {
+      width: 40%;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 18px 0;
+      box-shadow: 0 6px 18px rgba(10,14,20,0.06);
+    }
+    .figure-left img, .figure-right img, .figure-centre img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+    .figure-left { float: left; margin-right: 18px; }
+    .figure-right { float: right; margin-left: 18px; }
+    .figure-centre { margin-left: auto; margin-right: auto; clear: both; width: 60%; }
+
+    figcaption {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 8px 4px;
+    }
+
+    .clearfix::after { content: ""; display: table; clear: both; }
+
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: left;
+    }
+
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: 1fr; }
+      aside.images { position: relative; top: 0; flex-direction: row; overflow-x: auto; padding-bottom: 6px; }
+      .aside-thumb img { height: 160px; width: 260px; }
+      .figure-left, .figure-right, .figure-centre { width: 100%; float: none; margin: 12px 0; }
+    }
+  </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="logo">◯</div>
-        <p>
-            Something new is taking shape here.  
-            A quiet space being built with care.  
-            Check back soon.
-        </p>
+  <div class="page">
+    <div class="container">
+
+      <header class="site-header">
+        <div class="logo" aria-hidden="true">UA</div>
+      </header>
+
+      <section class="card layout clearfix">
+        <main class="content" role="main">
+          <article>
+            <h2>Challenges are what we live for</h2>
+            <div class="byline">A reflection prompted by that idea</div>
+
+            <p>
+              The phrase carries a simple, quiet force. It is not an exhortation to seek hardship for its own sake, but a reminder that difficulty is how we sharpen what matters. Challenges give our days edge. They turn vague intention into concrete work and transform idle ambition into steady practice.
+            </p>
+
+            <p>
+              When you start something new the first weeks are full of friction. Tools feel awkward, priorities are unclear and progress is sporadic. Those early problems are not only expected, they are helpful. They point to the gaps in knowledge and capability, and they tell you precisely where to focus your attention.
+            </p>
+
+            <figure class="figure-left" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=000" alt="Hands working with tools in a workshop" />
+              <figcaption>Small, repeated actions build skill</figcaption>
+            </figure>
+
+            <p>
+              I have found the habit of framing a challenge as a sequence of tiny, testable steps to be invaluable. Rather than waiting for a large block of time, break the work into experiments you can run in an hour or a day. The experiments produce evidence, and that evidence guides the next step. Over months, the evidence compounds into competence.
+            </p>
+
+            <p>
+              Choosing a meaningful difficulty requires judgement. Not every hard thing is worthy of your time. The right challenge aligns with a value or goal, and it can be measured. If the cost is purely spectacle, difficulty for show, you will burn energy without building capacity. Practical selection keeps effort from becoming mere performance.
+            </p>
+
+            <p>
+              There is a social benefit in showing the work as it happens. People rarely celebrate the scaffolding behind an outcome. When you make the process visible you invite others to learn by example, and you normalise the ordinary persistence that leads to results. That transparency creates a practical culture where help is welcomed and shared.
+            </p>
+
+            <figure class="figure-right" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=000" alt="A distant ridge under a wide sky" />
+              <figcaption>Distance is earned, not found</figcaption>
+            </figure>
+
+            <p>
+              Discipline matters more than inspiration. Inspiration starts things, but discipline carries them through. Set a repeating checkpoint, weekly or monthly, where you judge progress against measurable indicators. These checkpoints keep projects real and stop good intentions from becoming long-term distractions.
+            </p>
+
+            <p>
+              Failures are an essential part of the ledger. When a plan fails, the useful response is to record what happened and why, without theatrical self-blame. Ask what assumption broke down and what signal was missed. Over time those records become a map that helps you avoid repeated mistakes.
+            </p>
+
+            <figure class="figure-centre" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=000" alt="A stark ridge under open sky" />
+              <figcaption>Clarity comes from repeated correction</figcaption>
+            </figure>
+
+            <p>
+              Practical habits that I return to include defining the smallest meaningful test, measuring the result clearly, seeking honest feedback and iterating quickly. These elements turn vague aspiration into a system that shows whether you are improving or merely rehearsing.
+            </p>
+
+            <p>
+              There is also a moral dimension. Hard work done with humility tends to build respect in a way that showmanship does not. People notice consistency and competence, they do not always notice flair. If you want to be useful, favour practices that increase capacity rather than those that merely display it.
+            </p>
+
+            <p>
+              The company you keep matters. Surround yourself with people who value the same kind of disciplined effort. Partner with those who will point out blind spots, who will hold you accountable and who will celebrate the steady gains rather than only the dramatic ones.
+            </p>
+
+            <p>
+              In practical terms, choose constraints that force creativity. Constraints focus attention and force you to make trade-offs, often revealing better solutions than an unconstrained approach. Combine constraint with time and craft, and the three together convert intention into something tangible.
+            </p>
+
+            <p>
+              Finally, remember that embracing challenge does not mean neglecting rest or balance. Sustainable effort requires recovery. The point is not to exhaust yourself to make a statement, it is to arrange work so that it teaches you, improves skill and leaves you able to continue the process tomorrow.
+            </p>
+
+            <p>
+              So when the phrase "challenges are what we live for" comes up, I take it as a prompt to choose which challenges matter and how to approach them. The measure of success is not theatrical victory, but whether the work has changed you, made you more capable, more honest and more useful to others.
+            </p>
+
+            <footer>
+              <div>UA</div>
+            </footer>
+          </article>
+        </main>
+
+        <aside class="images" aria-label="Supporting images">
+
+          <div class="aside-thumb">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=000" alt="Mountain range at dawn" />
+            <div class="aside-caption">A steady path</div>
+          </div>
+
+          <div class="aside-thumb">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=000" alt="Focused hands at work" />
+            <div class="aside-caption">Work seen up close</div>
+          </div>
+
+          <div class="aside-thumb">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=000" alt="Solitary ridge and wide sky" />
+            <div class="aside-caption">Distance earned</div>
+          </div>
+
+        </aside>
+
+      </section>
+
     </div>
+  </div>
 </body>
 </html>
